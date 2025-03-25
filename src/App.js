@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import MessageContext from './context/MessageContext';
+import { useContext } from 'react';
 import './App.css';
 
-function App() {
+ export default function App() {
+
+  const message = "Hello World"
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  <div>
+    <MessageContext.Provider value={message}>
+      <ComponentA />
+    </MessageContext.Provider>
+  </div>
+  )
 }
 
-export default App;
+function ComponentA(){
+  return(
+    <ComponentB></ComponentB>
+  )
+}
+
+function ComponentB(){
+const message = useContext(MessageContext)
+
+  return(
+    <div>
+      Message: {message}
+    </div>
+  )
+}
