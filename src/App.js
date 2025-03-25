@@ -1,15 +1,13 @@
 import './App.css';
-import BlockPage from './components/BlogPage';
-import UserInfoContext from './context/UserInfoContext';
+import { ThemeProvider } from './context/ThemeProvider';
+import ContentComponent from './components/ContentComponent';
 
- export default function App() {
-
-  const userInfo = {username: 'Admin', isAdmin: 'true'}
+ export default function App(){ 
 
   return (
-  <UserInfoContext value={userInfo}>
-  <BlockPage></BlockPage>
-  </UserInfoContext>
+<ThemeProvider>
+  <ContentComponent />
+</ThemeProvider>
   )
 }
 
